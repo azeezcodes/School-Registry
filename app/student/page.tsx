@@ -1,7 +1,7 @@
 
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import StudentForm from "../../component/StudentForm";
+import StudentTable from "../../component/StudentTable";
 
 const page = () => {
 
@@ -16,7 +16,7 @@ const page = () => {
 
             <p className="font-extrabold text-center">Student List</p>
             <div className="mt-20">
-               <StudentForm  />{" "}
+               <StudentTable />{" "}
             </div>
          </div>
       </div>

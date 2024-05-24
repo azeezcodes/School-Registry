@@ -1,6 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 
 type StudentType = {
+   id: number;
    nationalId: string;
    name: string;
    surname: string;
@@ -10,6 +11,7 @@ type StudentType = {
 
 let StudentData: StudentType[] = [
    {
+      id: 1,
       nationalId: "5885r",
       name: "Ajoke",
       surname: "Adelana",
@@ -40,6 +42,7 @@ export async function POST(req: NextRequest) {
       }
 
       const newStudent: StudentType = {
+           id: StudentData.length + 1,
          nationalId,
          name,
          surname,
