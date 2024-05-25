@@ -15,7 +15,7 @@ const page = () => {
                </Link>
             </div>
             <div className="w-full justify-center ">
-               <p className="font-extrabold text-center text-3xl">Student List</p>
+               <p className="font-extrabold text-center text-3xl">Students' List</p>
             </div>
          </div>
          <div className="mt-20 max-w-full mx-auto">

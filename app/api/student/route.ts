@@ -2,21 +2,21 @@ import { NextResponse, NextRequest } from "next/server";
 
 type StudentType = {
    id: number;
-   nationalId: string;
+   nationalId: number;
    name: string;
    surname: string;
    dateOfBirth: string;
-   studentNumber: string;
+   studentNumber: number;
 };
 
 let StudentData: StudentType[] = [
    {
       id: 1,
-      nationalId: "5885r",
+      nationalId: 23445342,
       name: "Ajoke",
       surname: "Adelana",
-      dateOfBirth: "8/23/2011",
-      studentNumber: "23",
+      dateOfBirth: "2008-07-3",
+      studentNumber: 342,
    },
 ];
 

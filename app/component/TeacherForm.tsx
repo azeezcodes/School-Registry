@@ -2,26 +2,37 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Alert from "@mui/material/Alert";
 
-type StudentType = {
+type TeacherType = {
+   id: number;
+   title: titleEnum;
    nationalId: number;
    name: string;
    surname: string;
    dateOfBirth: string;
-   studentNumber: number;
+   teacherNumber: number;
+   salary: string;
 };
 
-export default function StudentForm({ closeTab }: any) {
+enum titleEnum {
+   Mr = "Mr",
+   Mrs = "Mrs",
+    Miss = "Miss",
+    Dr = "Dr",
+   Prof = "Prof"
+}
+
+export default function TeacherForm({ closeTab }: any) {
    const queryClient = useQueryClient();
 
    const {
       register,
       handleSubmit,
       formState: { errors },
-   } = useForm<StudentType>();
+   } = useForm<TeacherType>();
 
    const mutation = useMutation({
-      mutationFn: (data: StudentType) => {
-         return fetch("http://localhost:3000/api/student", {
+      mutationFn: (data: TeacherType) => {
+         return fetch("http://localhost:3000/api/teacher", {
             method: "POST",
             headers: {
                "Content-Type": "application/json",
@@ -35,7 +46,7 @@ export default function StudentForm({ closeTab }: any) {
          });
       },
       onSuccess: () => {
-         queryClient.invalidateQueries({ queryKey: ["studentData"] });
+         queryClient.invalidateQueries({ queryKey: ["teacherData"] });
          closeTab();
       },
       onError: () => {
@@ -43,7 +54,7 @@ export default function StudentForm({ closeTab }: any) {
       },
    });
 
-   const onSubmit: SubmitHandler<StudentType> = (data) => {
+   const onSubmit: SubmitHandler<TeacherType> = (data) => {
       mutation.mutate(data);
    };
 
@@ -70,7 +81,25 @@ export default function StudentForm({ closeTab }: any) {
                   </span>
                )}
             </div>
+            <div className="flex flex-col gap-1 mt-4">
+               <label className="font-[500]">Title</label>
+               <select
+                  {...register("title", { required: true })}
+                  className="border h-10 rounded pl-4 focus:outline-none"
+               >
+                  <option value="Mr">Mr</option>
+                  <option value="Mrs">Mrs</option>
+                  <option value="Miss">Miss</option>
+                  <option value="Dr">Dr</option>
+                  <option value="Prof">Prof</option>
+               </select>
 
+               {errors.name && (
+                  <span className="text-sm text-red-400 italic font-thin text-start">
+                     This field is required
+                  </span>
+               )}
+            </div>
             <div className="flex flex-col gap-1 mt-4">
                <label className="font-[500]">Name</label>
                <input
@@ -102,7 +131,7 @@ export default function StudentForm({ closeTab }: any) {
                <label className="font-[500]">Date of birth</label>
                <input
                   type="date"
-                  min="2002-05-25"
+                  max="2002-05-25"
                   {...register("dateOfBirth", { required: true })}
                   className="border h-10 rounded pl-4 focus:outline-none"
                   placeholder="Date of birth"
@@ -114,14 +143,28 @@ export default function StudentForm({ closeTab }: any) {
                )}
             </div>
             <div className="flex flex-col gap-1 mt-4">
-               <label className="font-[500]">Student Number</label>
+               <label className="font-[500]">Teacher Number</label>
                <input
                   type="number"
-                  {...register("studentNumber", { required: true })}
+                  {...register("teacherNumber", { required: true })}
                   className="border h-10 rounded pl-4 focus:outline-none"
-                  placeholder="Student Number"
+                  placeholder="Teacher Number"
                />
-               {errors.studentNumber && (
+               {errors.teacherNumber && (
+                  <span className="text-sm text-red-400 italic font-thin text-start">
+                     This field is required
+                  </span>
+               )}
+            </div>
+            <div className="flex flex-col gap-1 mt-4">
+               <label className="font-[500]">Salary</label>
+               <input
+                  type="text"
+                  {...register("salary", { required: false })}
+                  className="border h-10 rounded pl-4 focus:outline-none"
+                  placeholder="Salary"
+               />
+               {errors.teacherNumber && (
                   <span className="text-sm text-red-400 italic font-thin text-start">
                      This field is required
                   </span>

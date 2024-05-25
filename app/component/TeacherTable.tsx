@@ -3,16 +3,18 @@ import React, { useEffect, useState } from "react";
 import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import StudentForm from "./StudentForm";
 import { useQuery } from "@tanstack/react-query";
+import TeacherForm from "./TeacherForm";
 
-type StudentType = {
+type TeacherType = {
    id: number;
+   title: string;
    nationalId: number;
    name: string;
    surname: string;
    dateOfBirth: string;
-   studentNumber: number;
+   teacherNumber: number;
+   salary: string;
 };
 const style = {
    position: "absolute" as "absolute",
@@ -26,9 +28,9 @@ const style = {
    p: 4,
 };
 
-const StudentTable = () => {
-   const fetchStudentData = async () => {
-      const response = await fetch("http://localhost:3000/api/student");
+const TeacherTable = () => {
+   const fetchTeacherData = async () => {
+      const response = await fetch("http://localhost:3000/api/teacher");
       if (!response.ok) {
          throw new Error("Network response was not ok");
       }
@@ -37,8 +39,8 @@ const StudentTable = () => {
    };
 
    const { isLoading, error, data } = useQuery({
-      queryKey: ["studentData"],
-      queryFn: fetchStudentData,
+      queryKey: ["teacherData"],
+      queryFn: fetchTeacherData,
    });
 
    const [open, setOpen] = useState(false);
@@ -49,10 +51,12 @@ const StudentTable = () => {
    const columns = [
       { field: "id", headerName: "ID", width: 90 },
       { field: "nationalId", headerName: "National ID", width: 150 },
+      { field: "title", headerName: "Title", width: 150 },
       { field: "name", headerName: "Name", width: 150 },
       { field: "surname", headerName: "Surname", width: 150 },
       { field: "dateOfBirth", headerName: "Date Of Birth", width: 150 },
-      { field: "studentNumber", headerName: "Student Number", width: 150 },
+      { field: "teacherNumber", headerName: "Teacher Number", width: 150 },
+      { field: "salary", headerName: "Salary", width: 150 },
    ];
 
    return (
@@ -62,7 +66,7 @@ const StudentTable = () => {
                onClick={handleModal}
                className="py-2.5 px-5 me-2 mb-2 w-fit text-sm font-medium text-white  bg-gray-500  rounded-lg border border-gray-200 hover:bg-gray-100  hover:text-black "
             >
-               Add a New Student{" "}
+               Add a New Teacher{" "}
             </button>
             <Modal
                open={open}
@@ -71,7 +75,7 @@ const StudentTable = () => {
                aria-describedby="modal-modal-description"
             >
                <Box sx={style}>
-                  <StudentForm closeTab={handleModal} />
+                  <TeacherForm closeTab={handleModal} />
                </Box>
             </Modal>
          </div>
@@ -81,7 +85,7 @@ const StudentTable = () => {
          )}
          <div className="w-[100%] mt-8 ">
             <DataGrid
-               rows={data?.StudentData || []}
+               rows={data?.TeacherData || []}
                columns={columns}
                pageSizeOptions={[5]}
                initialState={{
@@ -97,4 +101,4 @@ const StudentTable = () => {
    );
 };
 
-export default StudentTable;
+export default TeacherTable;
