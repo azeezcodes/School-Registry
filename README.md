@@ -1,37 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+# School-Registry
+
+This Next.js application allows the registration of students and teachers. The application uses mock data and Nextjs API routes to handle data operations.
+
+## Features
+
+- Register students with validation:
+  - National ID (required)
+  - Name (required)
+  - Surname (required)
+  - Date of Birth (required, age must be at most 22 handled at the input tag)
+  - Student Number (required)
+
+- Register teachers with validation:
+  - National ID (required)
+  - Title (required, can be either [Mr, Mrs, Miss, Dr, Prof])
+  - Name (required)
+  - Surname (required)
+  - Date of Birth (required, age must be at least 21 handled at the input tag)
+  - Teacher Number (required)
+  - Salary (optional)
+
+- View the list of registered students and teachers.
+
+## Technologies Used
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- MaterialUI Table
+- React Hook Form
+- Tanstack React Query
+- Jest
 
 ## Getting Started
 
-First, run the development server:
+m (>=6.x) or yarn (>=1.22.x)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Installation
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Clone the repository:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   ```bash
+   git clone git@github.com:azeezcodes/School-Registry.git
+   cd School-Registry
+   yarn / npm install
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### User Interface
 
-## Learn More
+1. A welocme page with two buttons, teacher and student list button at the right leading to the designated page list
+2. On each page a table containing the list of students or teacher is displayed with a button at the top right to create the modal for filling the form
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# School-Registry

@@ -62,7 +62,7 @@ const StudentTable = () => {
                onClick={handleModal}
                className="py-2.5 px-5 me-2 mb-2 w-fit text-sm font-medium text-white  bg-gray-500  rounded-lg border border-gray-200 hover:bg-gray-100  hover:text-black "
             >
-               Add a New Student{" "}
+               <p> Add a New Student</p>
             </button>
             <Modal
                open={open}
