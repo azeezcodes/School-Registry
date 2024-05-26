@@ -13,7 +13,7 @@ let StudentData: StudentType[] = [
    {
       id: 1,
       nationalId: 23445342,
-      name: "Ajoke",
+      name: "Jack",
       surname: "Adelana",
       dateOfBirth: "2008-07-3",
       studentNumber: 342,

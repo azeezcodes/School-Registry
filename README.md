@@ -31,7 +31,7 @@ This Next.js application allows the registration of students and teachers. The a
 - Tailwind CSS
 - MaterialUI Table
 - React Hook Form
-- Tanstack React Query
+- Tanstack React Query: for state management and fetching
 - Jest
 
 ## Getting Started
