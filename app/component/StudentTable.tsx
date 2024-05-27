@@ -59,6 +59,7 @@ const StudentTable = () => {
       <div className="w-[100%] h-fit lg:px-40 px-14 ">
          <div className=" flex flex-col items-end">
             <button
+               role="modal"
                onClick={handleModal}
                className="py-2.5 px-5 me-2 mb-2 w-fit text-sm font-medium text-white  bg-gray-500  rounded-lg border border-gray-200 hover:bg-gray-100  hover:text-black "
             >

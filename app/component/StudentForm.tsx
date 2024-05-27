@@ -55,8 +55,11 @@ export default function StudentForm({ closeTab }: any) {
 
          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-1 mt-4">
-               <label className="font-[500]">National Id</label>
+               <label htmlFor="nationalId" className="font-[500]">
+                  National Id
+               </label>
                <input
+                  id="nationalId"
                   type="number"
                   {...register("nationalId", {
                      required: true,
@@ -72,8 +75,11 @@ export default function StudentForm({ closeTab }: any) {
             </div>
 
             <div className="flex flex-col gap-1 mt-4">
-               <label className="font-[500]">Name</label>
+               <label htmlFor="name" className="font-[500]">
+                  Name
+               </label>
                <input
+                  id="name"
                   {...register("name", { required: true })}
                   className="border h-10 rounded pl-4 focus:outline-none"
                   placeholder="Name"
@@ -86,8 +92,11 @@ export default function StudentForm({ closeTab }: any) {
             </div>
 
             <div className="flex flex-col gap-1 mt-4">
-               <label className="font-[500]">Surname</label>
+               <label htmlFor="surname" className="font-[500]">
+                  Surname
+               </label>
                <input
+                  id="surname"
                   {...register("surname", { required: true })}
                   className="border h-10 rounded pl-4 focus:outline-none"
                   placeholder="Surname"
@@ -99,8 +108,11 @@ export default function StudentForm({ closeTab }: any) {
                )}
             </div>
             <div className="flex flex-col gap-1 mt-4">
-               <label className="font-[500]">Date of birth</label>
+               <label htmlFor="date_of_birth" className="font-[500]">
+                  Date of birth
+               </label>
                <input
+                  id="date_of_birth"
                   type="date"
                   min="2002-05-25"
                   {...register("dateOfBirth", { required: true })}
@@ -114,8 +126,11 @@ export default function StudentForm({ closeTab }: any) {
                )}
             </div>
             <div className="flex flex-col gap-1 mt-4">
-               <label className="font-[500]">Student Number</label>
+               <label htmlFor="student_number" className="font-[500]">
+                  Student Number
+               </label>
                <input
+                  id="student_number"
                   type="number"
                   {...register("studentNumber", { required: true })}
                   className="border h-10 rounded pl-4 focus:outline-none"
