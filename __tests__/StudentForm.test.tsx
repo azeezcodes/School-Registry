@@ -1,14 +1,18 @@
 import React from "react";
 import "@testing-library/jest-dom";
-import { render, screen, fireEvent, waitFor, act } from "@testing-library/react";
+import {
+   render,
+   screen,
+   fireEvent,
+   waitFor,
+   act,
+} from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import StudentForm from "@/component/StudentForm";
 
 const queryClient = new QueryClient();
 
 const mockFetch = jest.fn();
-
-
 
 const renderComponent = () =>
    render(
@@ -18,7 +22,7 @@ const renderComponent = () =>
    );
 
 describe("StudentForm Page", () => {
-   it("displays validation errors", async () => {
+   it("displays validation errors when submit button is clicked", async () => {
       await act(async () => {
          renderComponent();
       });
@@ -28,7 +32,15 @@ describe("StudentForm Page", () => {
       });
 
       await waitFor(() => {
-         expect(screen.getAllByText(/This field is required/i)).toHaveLength(5);
+         const errorMessages = screen.getAllByText(/^This field is required$/i);
+         expect(errorMessages).toHaveLength(5);
       });
    });
-});
+    
+    it("display instruction to fill the field", () => {
+        renderComponent()
+         expect(
+            screen.getByText("Fill in your necessary Information.")
+         ).toBeInTheDocument();
+    })
+});;
